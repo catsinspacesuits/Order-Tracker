@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>OrderTracker</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+        <nav class="navbar navbar-inverse">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>                        
+              </button>
+              <div class="navbar-header">
+                <%= link_to "Order Tracker", root_path, class: "navbar-brand"  %>
+              </div>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+              <ul class="nav navbar-nav">
+              <!-- Can only add order when logged in. Directed to Log in if not logged in -->
+                <% if user_signed_in? %>
+                  <li><%= link_to "Add Order", new_order_path %></li>
+                <% else %>  
+                  <li><%= link_to "Add Order", new_user_session_path %></li>
+                <% end %>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <!-- Log out shows when logged in. Log in shows when not logged in -->
+                <% if user_signed_in? %>
+                  <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+                <% else %>
+                  <li><%= link_to "Sign Up", new_user_registration_path %></li>
+                  <li><%= link_to "Log In", new_user_session_path %></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </nav> <!-- end of navbar -->
+
+
+  	<div class="wrapper">
+    	<%= yield %>
+    </div>
+    
+  </body>
+</html>
