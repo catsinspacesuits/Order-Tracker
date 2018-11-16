@@ -1,0 +1,14 @@
+NOTES
+
+gems: 
+
+bootstrap SASS: used for navbar. Should look into turning off/deleting other bootstrap functions.
+
+
+
+HTML5 geolocation function to fetch current location, then JS to populate form fields with this data. Also, throws an error message if browser not supported or geolocation not turned on.
+
+
+
+Problems and how solved:
+
