@@ -1,9 +1,50 @@
-<%= simple_form_for @order do |f| %>
 
-<%= f.input :start_point %>
-<%= f.input :restaurant_location %>
-<%= f.input :customer_location %>
-<%= f.input :fee %>
+
+<%= simple_form_for @order do |f| %>
+	
+<div class="container">
+	<div class="row coords-box">
+		<div class="col-xs-12 instructions-wrapper">
+			<p class="form-instructions">1. Add starting point coordinates: </p>
+			<div class="add-button" onclick="getLocation1()">+</div>
+		</div> <!-- end of instructions wrapper -->
+		<div class="col-xs-8 form-input">
+			<%= f.input :start_point, label: false,  input_html: { id: 'coordinates1' } %>
+		</div>
+		<div class="col-xs-3 button clear-button" onclick="clearField1()">Clear field</div>
+	</div> <!-- end of row -->
+			
+	<div class="row coords-box">
+		<div class="col-xs-12 instructions-wrapper">
+			<p class="form-instructions">2. Add restaurant coordinates: </p>
+			<div class="add-button" onclick="getLocation2()">+</div>
+		</div> <!-- end of instructions wrapper -->
+		<div class="col-xs-8 form-input">
+			<%= f.input :restaurant_location, label: false, input_html: { id: 'coordinates2' } %>
+		</div>	
+		<div class="col-xs-3 button clear-button" onclick="clearField2()">Clear field</div>
+	</div> <!-- end of row -->
+
+	<div class="row coords-box">
+		<div class="col-xs-12 instructions-wrapper">
+			<p class="form-instructions">3. Add customer coordinates: </p>
+			<div class="add-button" onclick="getLocation3()">+</div>
+		</div> <!-- end of instructions wrapper -->
+		<div class="col-xs-8 form-input">
+			<%= f.input :customer_location, label: false, input_html: { id: 'coordinates3' } %>
+		</div>
+		<div class="col-xs-3 button clear-button" onclick="clearField3()">Clear field</div>
+	</div> <!-- end of row -->
+			
+	<div class="row coords-box">
+		<div class="col-xs-8 form-input">
+			<%= f.input :fee, label: false, hint: 'Enter delivery fee here', input_html: { id: 'fee' } %>
+		</div>
+		<div class="col-xs-3 button clear-button" onclick="clearField4()">Clear field</div>
+	</div>
+</div> <!-- end of container -->
+
+<%= button_tag "Clear all fields", type: :reset, class: 'button clear-all-button' %><br>
 <%= f.button :submit %>
 
 <% end %>

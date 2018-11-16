@@ -4,6 +4,8 @@
     <title>OrderTracker</title>
     <%= csrf_meta_tags %>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -44,10 +46,75 @@
           </div>
         </nav> <!-- end of navbar -->
 
-
   	<div class="wrapper">
     	<%= yield %>
     </div>
+
+    <script>
+    var firstLocation = document.getElementById("coordinates1");
+    var secondLocation = document.getElementById("coordinates2");
+    var thirdLocation = document.getElementById("coordinates3");
+
+    function getLocation1() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition1);
+        } else { 
+            firstLocation.innerHTML = "Geolocation is not supported by this browser.";
+        }
+    }
+
+    function getLocation2() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition2);
+        } else { 
+            secondLocation.innerHTML = "Geolocation is not supported by this browser.";
+        }
+    }
+
+    function getLocation3() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition3);
+        } else { 
+            thirdLocation.innerHTML = "Geolocation is not supported by this browser.";
+        }
+    }
+
+    function showPosition1(position) {
+        firstLocation.value = position.coords.latitude + 
+        ", " + position.coords.longitude;
+    }
+
+    function showPosition2(position) {
+        secondLocation.value = position.coords.latitude + 
+        ", " + position.coords.longitude;
+    }
+
+    function showPosition3(position) {
+        thirdLocation.value = position.coords.latitude + 
+        ", " + position.coords.longitude;
+    }
+
+    // CLEAR FORM FIELD
+
+    function clearField1() {
+        var field = document.getElementById("coordinates1");
+        field.value = "";
+    }
+
+    function clearField2() {
+        var field = document.getElementById("coordinates2");
+        field.value = "";
+    }
+    function clearField3() {
+        var field = document.getElementById("coordinates3");
+        field.value = "";
+    }
+    function clearField4() {
+        var field = document.getElementById("fee");
+        field.value = "";
+    }
+
+    </script>
     
   </body>
 </html>
