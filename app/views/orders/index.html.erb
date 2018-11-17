@@ -1,10 +1,15 @@
 <h2>Orders</h2>
+<!-- Only allow adding order if signed in, otherwise redirect to log in -->
+<% if user_signed_in? %>
+  <h3><%= link_to "Add Order", new_order_path %></h3>
+<% else %>  
+  <h3><%= link_to "Add Order", new_user_session_path %></h3>
+<% end %>
 
-<h3><%= link_to "Add order", new_order_path %></h3>
-<h3 class="order-info">Start Point</h3>
-<h3 class="order-info">Restaurant Location</h3>
-<h3 class="order-info">Customer Location</h3>
-<h3 class="order-info">Fee</h3>
+<h3 class="order-info order-info-header">Start</h3>
+<h3 class="order-info order-info-header">Restaurant</h3>
+<h3 class="order-info order-info-header">Customer</h3>
+<h3 class="order-info order-info-header">Fee</h3>
 <% @orders.each do |order| %>
 	<h4 class="order-info"><%= order.start_point %></h4>
 	<h4 class="order-info"><%= order.restaurant_location %></h4>
