@@ -14,13 +14,17 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+ $btn: #84FF6B;
+ $clear-all-btn: #FF5854;
+ $clear-btn: #7790C8;
+
  * {
  	box-sizing: border-box;
  }
 
- $btn: #84FF6B;
- $clear-all-btn: #FF5854;
- $clear-btn: #7790C8;
+ body {
+ 	font-family: 'Noto Sans TC', sans-serif;
+ }
 
 .wrapper {
 	margin: 15px;
@@ -45,6 +49,10 @@
 	padding: 5px;
 }
 
+.order-header, .order-header-text {
+	margin: 10px;
+}
+
 // BUTTONS
 
 .button {
@@ -57,12 +65,16 @@
 }
 
 .clear-button {
+	margin-top: 5px;
 	text-align: center;
 	background-color: $clear-btn;
+	font-size: 1rem;
 }
 
 .clear-all-button {
 	background-color: $clear-all-btn;
+	float: right;
+	margin-top: 10px;
 }
 
 .add-button {
@@ -74,7 +86,8 @@
 	border: 1px solid black;
 	background-color: #eee;
 	color: black;
-	font-size: 18px;
+	font-size: 17px;
 	border-radius: 5px;
 	cursor: pointer;
+	box-shadow: 3px 3px 18px -2px rgba(0,0,0,0.75);
 }
