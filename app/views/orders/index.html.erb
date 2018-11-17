@@ -11,14 +11,14 @@
 <h3 class="order-info order-info-header">Customer</h3>
 <h3 class="order-info order-info-header">Fee</h3>
 <% @orders.each do |order| %>
-	<h4 class="order-info"><%= order.start_point %></h4>
-	<h4 class="order-info"><%= order.restaurant_location %></h4>
-	<h4 class="order-info"><%= order.customer_location %></h4>
+	<h4 class="order-info"><%= order.start_point.split(', ').map { |e| e.to_f.round(4) } %></h4>
+	<h4 class="order-info"><%= order.restaurant_location.split(', ').map { |e| e.to_f.round(4) } %></h4>
+	<h4 class="order-info"><%= order.customer_location.split(', ').map { |e| e.to_f.round(4) } %></h4>
 	<h4 class="order-info"><%= order.fee %></h4>
 	<% if user_signed_in? %>
-		<% if order.user_id == current_user.id %>
+		<% if order.user_id == current_user.id %><br>
 			<%= link_to "Edit", edit_order_path(order) %>
-			<%= link_to "Delete", order_path(order), method: :delete, data: { confirm: "Are you sure?" } %>
+			<%= link_to "Delete", order_path(order), method: :delete, data: { confirm: "Are you sure?" } %><br>
 		<% end %>
 	<% end %>
 <% end %>
