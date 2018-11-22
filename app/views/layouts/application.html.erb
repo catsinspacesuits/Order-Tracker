@@ -4,7 +4,7 @@
     <title>OrderTracker</title>
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Allerta+Stencil|Noto+Sans+TC" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -45,12 +45,14 @@
           </div>
         </nav> <!-- end of navbar -->
 
-  	<div class="wrapper">
+  	<div class="page-wrapper">
     	<%= yield %>
     </div>
 
     <script>
     var firstLocation = document.getElementById("coordinates1");
+    var firstTime = document.getElementById("time1");
+    var timeNow = "hello";
     var secondLocation = document.getElementById("coordinates2");
     var thirdLocation = document.getElementById("coordinates3");
 
@@ -78,9 +80,14 @@
         }
     }
 
+    function addTime() {
+
+    }
+
     function showPosition1(position) {
         firstLocation.value = position.coords.latitude + 
         ", " + position.coords.longitude;
+        firstTime.innerHTML = "hello";
     }
 
     function showPosition2(position) {

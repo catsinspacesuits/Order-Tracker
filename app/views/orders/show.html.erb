@@ -1,1 +1,22 @@
-<h2>Show Page</h2>
+<h2><%= @order.restaurant %></h2>
+
+<h4>Distance to Restaurant: <%= @order.restaurant_to_customer_distance.round(0) %>m</h4>
+<h4>Distance to Customer: <%= @order.start_to_restaurant_distance.round(0) %>m</h4>
+<h4>Total Distance: <%= @order.total_distance.round(0) %>m</h4>
+<h4>Fee: <%= @order.fee %></h4>
+<br>
+
+<h4>Start Point: <%= @order.start_point.split(', ').map { |e| e.to_f.round(5) } %></h4>
+<h4>Restaurant Location: <%= @order.restaurant_location.split(', ').map { |e| e.to_f.round(5) } %></h4>
+<h4>Customer Location: <%= @order.customer_location.split(', ').map { |e| e.to_f.round(5) } %></h4>
+<br>
+
+<%= link_to "Back", orders_path %>
+<% if user_signed_in? %>
+	<% if @order.user_id == current_user.id %>
+		<%= link_to "Edit", edit_order_path(@order) %>
+		<%= link_to "Delete", order_path(@order), method: :delete, data: { confirm: "Are you sure?" } %>
+	<% end %>
+<% end %>
+
+

@@ -1,8 +1,22 @@
 
+<%= button_tag "Clear All Fields", type: :reset, class: 'button clear-all-button' %>
 
 <%= simple_form_for @order do |f| %>
 	
 <div class="container">
+	<div class="row coords-box">
+		<div class="col-xs-8 form-input">
+			<%= f.input :restaurant %>
+		</div>
+	</div>
+
+	<div class="row coords-box">
+		<div class="col-xs-8 form-input">
+			<%= f.input :fee, label: false, hint: 'Enter delivery fee here', input_html: { id: 'fee' } %>
+		</div>
+		<div class="col-xs-3 button clear-button" onclick="clearField4()">Clear field</div>
+	</div>
+
 	<div class="row coords-box">
 		<div class="col-xs-12 instructions-wrapper">
 			<p class="form-instructions">1. Add starting point coordinates </p>
@@ -35,16 +49,8 @@
 		</div>
 		<div class="col-xs-3 button clear-button" onclick="clearField3()">Clear field</div>
 	</div> <!-- end of row -->
-			
-	<div class="row coords-box">
-		<div class="col-xs-8 form-input">
-			<%= f.input :fee, label: false, hint: 'Enter delivery fee here', input_html: { id: 'fee' } %>
-		</div>
-		<div class="col-xs-3 button clear-button" onclick="clearField4()">Clear field</div>
-	</div>
 </div> <!-- end of container -->
 
-<%= button_tag "Clear all fields", type: :reset, class: 'button clear-all-button' %><br>
 <%= f.button :submit %>
 
 <% end %>

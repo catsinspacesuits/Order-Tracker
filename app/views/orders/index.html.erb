@@ -1,24 +1,48 @@
 <h2>Orders</h2>
+<p>Here is a list of all the orders added by all riders. To add orders yourself please create an account and hit 'Add Order'. To view more info about each order, click the restaurant names in the list</p>
+
+<!-- Only allow viewing orders if signed in -->
+<% if user_signed_in? %>
+  <h4><%= link_to "View My Orders", user_orders_path(current_user.id) %></h4>
+<% else %>  
+  <h4><%= link_to "View My Orders", new_user_session_path %></h4>
+<% end %>
 <!-- Only allow adding order if signed in, otherwise redirect to log in -->
 <% if user_signed_in? %>
-  <h3><%= link_to "Add Order", new_order_path %></h3>
+  <h4><%= link_to "Add Order", new_order_path %></h4>
 <% else %>  
-  <h3><%= link_to "Add Order", new_user_session_path %></h3>
+  <h4><%= link_to "Add Order", new_user_session_path %></h4>
 <% end %>
 
-<h3 class="order-info order-info-header">Start</h3>
+<h3>All Orders</h3>
+
+<p>Download order data:
+	<%= link_to "CSV", orders_path(format: "csv") %> |
+	<%= link_to "Excel", orders_path(format: "xls") %>
+</p>
+
 <h3 class="order-info order-info-header">Restaurant</h3>
-<h3 class="order-info order-info-header">Customer</h3>
-<h3 class="order-info order-info-header">Fee</h3>
+<h3 class="order-info order-info-header">Dist. to Rest. (m)</h3>
+<h3 class="order-info order-info-header">Dist. to Cust. (m)</h3>
+<h3 class="order-info order-info-header">Total (m)</h3>
+<h3 class="order-info order-info-header">Fee (€)</h3>
+
 <% @orders.each do |order| %>
-	<h4 class="order-info"><%= order.start_point.split(', ').map { |e| e.to_f.round(4) } %></h4>
-	<h4 class="order-info"><%= order.restaurant_location.split(', ').map { |e| e.to_f.round(4) } %></h4>
-	<h4 class="order-info"><%= order.customer_location.split(', ').map { |e| e.to_f.round(4) } %></h4>
-	<h4 class="order-info"><%= order.fee %></h4>
-	<% if user_signed_in? %>
-		<% if order.user_id == current_user.id %><br>
-			<%= link_to "Edit", edit_order_path(order) %>
-			<%= link_to "Delete", order_path(order), method: :delete, data: { confirm: "Are you sure?" } %><br>
+	<div class="order-box">
+		<h4 class="order-info"><%= link_to order.restaurant, order_path(order) %></h4>
+		<h4 class="order-info"><%= order.restaurant_to_customer_distance.round(0) %></h4>
+		<h4 class="order-info"><%= order.start_to_restaurant_distance.round(0) %></h4>
+		<h4 class="order-info"><%= order.total_distance.round(0) %></h4>
+		<h4 class="order-info"><%= order.fee %></h4><br>
+		
+		<% if user_signed_in? %> <!-- only show edit and delete of user's own orders -->
+			<% if order.user_id == current_user.id %>
+				<%= link_to "Edit", edit_order_path(order) %>
+				<%= link_to "Delete", order_path(order), method: :delete, data: { confirm: "Are you sure?" } %><br>
+			<% end %>
 		<% end %>
-	<% end %>
+	</div>
 <% end %>
+
+
+

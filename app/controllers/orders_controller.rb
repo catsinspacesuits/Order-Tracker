@@ -3,6 +3,12 @@ class OrdersController < ApplicationController
 
 	def index
 		@orders = Order.all.order("created_at DESC")
+		# to allow csv and xls formats to be downloaded
+		respond_to do |format|
+			format.html
+			format.csv { send_data @orders.to_csv }
+			format.xls { send_data @orders.to_csv(col_sep: "\t") }
+		end
 	end
 
 	def new
@@ -41,7 +47,7 @@ class OrdersController < ApplicationController
 	private
 
 		def order_params
-			params.require(:order).permit(:start_point, :restaurant_location, :customer_location, :fee)
+			params.require(:order).permit(:start_point, :restaurant_location, :customer_location, :fee, :restaurant)
 		end
 
 		def find_order
