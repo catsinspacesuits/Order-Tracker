@@ -28,8 +28,10 @@
               <!-- Can only add order when logged in. Directed to Log in if not logged in -->
                 <% if user_signed_in? %>
                   <li><%= link_to "Add Order", new_order_path %></li>
+                  <li><%= link_to "View My Orders", user_orders_path(current_user.id) %></li>
                 <% else %>  
                   <li><%= link_to "Add Order", new_user_session_path %></li>
+                  <li><%= link_to "View My Orders", new_user_session_path %></li>
                 <% end %>
               </ul>
               <ul class="nav navbar-nav navbar-right">
@@ -46,7 +48,7 @@
         </nav> <!-- end of navbar -->
 
   	<div class="page-wrapper">
-    	<%= yield %>
+      <%= yield %>
     </div>
 
     <script>

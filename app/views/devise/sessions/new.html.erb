@@ -1,5 +1,7 @@
 <h2>Log In</h2>
-<h3>Please log in or sign up before you can view your orders or add new orders</h3>
+<h3>Please sign up or log in to view your orders or add new orders</h3>
+
+<%= render "devise/shared/links" %><br>
 
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="form-inputs">
@@ -17,5 +19,3 @@
     <%= f.button :submit, "Log in" %>
   </div>
 <% end %>
-
-<%= render "devise/shared/links" %>

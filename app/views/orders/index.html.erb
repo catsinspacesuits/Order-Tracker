@@ -1,22 +1,16 @@
-<h2>Orders</h2>
-<p>Here is a list of all the orders added by all riders. To add orders yourself please create an account and hit 'Add Order'. To view more info about each order, click the restaurant names in the list</p>
+<p class="info-text">Here is a list of all the orders added by all riders. To add orders yourself please create an account and hit 'Add Order'. To view more info about each order, click the restaurant names in the list. To view the orders you've added yourself click 'View My Orders'. You can also download the data using the links below.</p>
 
-<!-- Only allow viewing orders if signed in -->
+<!-- Only allow viewing own orders and adding orders if signed in -->
 <% if user_signed_in? %>
-  <h4><%= link_to "View My Orders", user_orders_path(current_user.id) %></h4>
+  <p><%= link_to "View My Orders", user_orders_path(current_user.id), class: "link-button button" %>
+  <%= link_to "Add Order", new_order_path, class: "link-button button" %></p>
 <% else %>  
-  <h4><%= link_to "View My Orders", new_user_session_path %></h4>
-<% end %>
-<!-- Only allow adding order if signed in, otherwise redirect to log in -->
-<% if user_signed_in? %>
-  <h4><%= link_to "Add Order", new_order_path %></h4>
-<% else %>  
-  <h4><%= link_to "Add Order", new_user_session_path %></h4>
+  <p class="index-button"><%= link_to "View My Orders", new_user_session_path, class: "link-button button" %> | <%= link_to "Add Order", new_user_session_path, class: "link-button button" %></p>
 <% end %>
 
 <h3>All Orders</h3>
 
-<p>Download order data:
+<p>Download all order data:
 	<%= link_to "CSV", orders_path(format: "csv") %> |
 	<%= link_to "Excel", orders_path(format: "xls") %>
 </p>

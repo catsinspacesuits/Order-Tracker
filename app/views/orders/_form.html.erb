@@ -12,7 +12,7 @@
 
 	<div class="row coords-box">
 		<div class="col-xs-8 form-input">
-			<%= f.input :fee, label: false, hint: 'Enter delivery fee here', input_html: { id: 'fee' } %>
+			<%= f.input :fee, input_html: { id: 'fee' } %>
 		</div>
 		<div class="col-xs-3 button clear-button" onclick="clearField4()">Clear field</div>
 	</div>
@@ -51,6 +51,6 @@
 	</div> <!-- end of row -->
 </div> <!-- end of container -->
 
-<%= f.button :submit %>
+<%= f.button :submit, "Save Order", class: "save-button" %>
 
 <% end %>

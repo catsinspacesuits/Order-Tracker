@@ -1,4 +1,8 @@
 <h2>My Orders</h2>
+<p>Download my order data:
+	<%= link_to "CSV", user_orders_path(current_user.id, format: "csv") %> |
+	<%= link_to "Excel", user_orders_path(current_user.id, format: "xls") %>
+</p>
 <% @orders.each do |order| %>
 	<div class="order-box">
 		<h4 class="order-info"><%= link_to order.restaurant, order_path(order) %></h4>
@@ -15,3 +19,4 @@
 		<% end %>
 	</div>
 <% end %>
+

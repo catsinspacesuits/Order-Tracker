@@ -30,7 +30,7 @@ class OrdersController < ApplicationController
 		@order = current_user.orders.build(order_params)
 
 		if @order.save
-			redirect_to root_path
+			redirect_to order_path(@order)
 		else
 			render 'new'
 		end
