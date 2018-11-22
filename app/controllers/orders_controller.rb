@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
 		respond_to do |format|
 			format.html
 			format.csv { send_data @orders.to_csv }
-			format.xls { send_data @orders.to_csv(col_sep: "\t") }
+			format.xls { send_data @orders.to_csv(col_sep: "\t") } # tab separate to work on excel
 		end
 	end
 
@@ -30,7 +30,7 @@ class OrdersController < ApplicationController
 		@order = current_user.orders.build(order_params)
 
 		if @order.save
-			redirect_to order_path(@order)
+			redirect_to root_path
 		else
 			render 'new'
 		end
