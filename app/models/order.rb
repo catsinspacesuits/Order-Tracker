@@ -1,6 +1,8 @@
 class Order < ApplicationRecord
 	belongs_to :user
 
+	validates :start_point, :restaurant_location, :customer_location, presence: { message: ": PLEASE FILL IN THIS FIELD!" }
+
 	def restaurant_to_customer_distance
 	  Geolocation.new.distance(
 	    restaurant_location.split(',').map! { |e| e.to_f },

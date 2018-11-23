@@ -1,8 +1,8 @@
 <h2><%= @order.restaurant %></h2>
 
 <h4><strong>Fee: </strong><%= @order.fee %></h4>
-<h4><strong>Distance to Restaurant: </strong><%= @order.restaurant_to_customer_distance.round(0) %>m</h4>
-<h4><strong>Distance to Customer: </strong><%= @order.start_to_restaurant_distance.round(0) %>m</h4>
+<h4><strong>Distance to Restaurant: </strong><%= @order.start_to_restaurant_distance.round(0) %>m</h4>
+<h4><strong>Distance to Customer: </strong><%= @order.restaurant_to_customer_distance.round(0) %>m</h4>
 <h4><strong>Total Distance: </strong><%= @order.total_distance.round(0) %>m</h4>
 <br>
 
