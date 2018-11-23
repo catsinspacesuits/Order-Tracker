@@ -6,8 +6,8 @@
 <% @orders.each do |order| %>
 	<div class="order-box">
 		<h4 class="order-info"><%= link_to order.restaurant, order_path(order) %></h4>
-		<h4 class="order-info"><%= order.restaurant_to_customer_distance.round(0) %></h4>
 		<h4 class="order-info"><%= order.start_to_restaurant_distance.round(0) %></h4>
+		<h4 class="order-info"><%= order.restaurant_to_customer_distance.round(0) %></h4>
 		<h4 class="order-info"><%= order.total_distance.round(0) %></h4>
 		<h4 class="order-info"><%= order.fee %></h4><br>
 		
