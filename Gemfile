@@ -19,6 +19,8 @@ gem 'simple_form', '~> 4.0', '>= 4.0.1'
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
+gem 'will_paginate', '~> 3.1.1'
+gem 'will_paginate-bootstrap'
 
 
 # Use CoffeeScript for .coffee assets and views

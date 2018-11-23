@@ -38,5 +38,8 @@
 	</div>
 <% end %>
 
+<!-- pagination, styled with will paginate bootstrap gem -->
+<%= will_paginate @orders, renderer: BootstrapPagination::Rails, previous_label: "Older", next_label: "Newer" %>
+
 
 

@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
 	before_action :find_order, only: [:edit, :destroy, :update, :show]
 
 	def index
-		@orders = Order.all.order("created_at DESC")
+		@orders = Order.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 20)
 		# to allow csv and xls formats to be downloaded
 		respond_to do |format|
 			format.html
