@@ -5,7 +5,7 @@
   <p><%= link_to "View My Orders", user_orders_path(current_user.id), class: "link-button button" %>
   <%= link_to "Add Order", new_order_path, class: "link-button button" %></p>
 <% else %>  
-  <p class="index-button"><%= link_to "View My Orders", new_user_session_path, class: "link-button button" %> | <%= link_to "Add Order", new_user_session_path, class: "link-button button" %></p>
+  <p class="index-button"><%= link_to "View My Orders", new_user_session_path, class: "link-button button" %> <%= link_to "Add Order", new_user_session_path, class: "link-button button" %></p>
 <% end %>
 
 <h3>All Orders</h3>
@@ -27,7 +27,7 @@
 		<h4 class="order-info"><%= order.start_to_restaurant_distance.round(0) %></h4>
 		<h4 class="order-info"><%= order.restaurant_to_customer_distance.round(0) %></h4>
 		<h4 class="order-info"><%= order.total_distance.round(0) %></h4>
-		<h4 class="order-info"><%= order.fee %></h4><br>
+		<h4 class="order-info"><%= order.fee.to_f.round(2) %></h4><br>
 		
 		<% if user_signed_in? %> <!-- only show edit and delete of user's own orders -->
 			<% if order.user_id == current_user.id %>
@@ -35,11 +35,12 @@
 				<%= link_to "Delete", order_path(order), method: :delete, data: { confirm: "Are you sure?" } %><br>
 			<% end %>
 		<% end %>
+		<p class="date-time"><%= order.created_at.to_formatted_s(:short) %><p>
 	</div>
 <% end %>
 
 <!-- pagination, styled with will paginate bootstrap gem -->
-<%= will_paginate @orders, renderer: BootstrapPagination::Rails, previous_label: "Older", next_label: "Newer" %>
+<%= will_paginate @orders, renderer: BootstrapPagination::Rails, previous_label: "Newer", next_label: "Older" %>
 
 
 

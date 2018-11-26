@@ -17,8 +17,10 @@
 				<%= link_to "Delete", order_path(order), method: :delete, data: { confirm: "Are you sure?" } %><br>
 			<% end %>
 		<% end %>
+		<%= order.created_at %>
 	</div>
 <% end %>
 
-<%= will_paginate @orders, renderer: BootstrapPagination::Rails %>
+<!-- pagination, styled with will paginate bootstrap gem -->
+<%= will_paginate @orders, renderer: BootstrapPagination::Rails, previous_label: "Newer", next_label: "Older" %>
 

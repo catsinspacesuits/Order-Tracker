@@ -54,7 +54,6 @@
     <script>
     var firstLocation = document.getElementById("coordinates1");
     var firstTime = document.getElementById("time1");
-    var timeNow = "hello";
     var secondLocation = document.getElementById("coordinates2");
     var thirdLocation = document.getElementById("coordinates3");
 
@@ -82,14 +81,10 @@
         }
     }
 
-    function addTime() {
-
-    }
-
     function showPosition1(position) {
         firstLocation.value = position.coords.latitude + 
         ", " + position.coords.longitude;
-        firstTime.innerHTML = "hello";
+        // firstTime.value = Date.now();
     }
 
     function showPosition2(position) {
