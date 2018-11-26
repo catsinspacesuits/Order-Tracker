@@ -57,6 +57,7 @@
     var secondLocation = document.getElementById("coordinates2");
     var thirdLocation = document.getElementById("coordinates3");
 
+    // Check if Geolocation is supported, if not, show message
     function getLocation1() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(showPosition1);
