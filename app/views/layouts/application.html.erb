@@ -52,67 +52,42 @@
     </div>
 
     <script>
-    var firstLocation = document.getElementById("coordinates1");
-    var firstTime = document.getElementById("time1");
-    var secondLocation = document.getElementById("coordinates2");
-    var thirdLocation = document.getElementById("coordinates3");
 
-    // Check if Geolocation is supported, if not, show message
-    function getLocation1() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showPosition1);
-        } else { 
-            firstLocation.innerHTML = "Geolocation is not supported by this browser.";
-        }
-    }
+    var locations = ["coordinatesStart", "coordinatesRest", "coordinatesCust"]
+      .map(id => document.getElementById(id));
 
-    function getLocation2() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showPosition2);
-        } else { 
-            secondLocation.innerHTML = "Geolocation is not supported by this browser.";
-        }
-    }
+    Array.prototype.forEach.call(
+      document.querySelectorAll('.add-button'),
+      (button, i) => {
+        button.addEventListener('click', () => getLocation(i));
+      }
+    );
 
-    function getLocation3() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showPosition3);
-        } else { 
-            thirdLocation.innerHTML = "Geolocation is not supported by this browser.";
-        }
-    }
-
-    function showPosition1(position) {
-        firstLocation.value = position.coords.latitude + 
-        ", " + position.coords.longitude;
-        // firstTime.value = Date.now();
-    }
-
-    function showPosition2(position) {
-        secondLocation.value = position.coords.latitude + 
-        ", " + position.coords.longitude;
-    }
-
-    function showPosition3(position) {
-        thirdLocation.value = position.coords.latitude + 
-        ", " + position.coords.longitude;
+    function getLocation(i) {
+      var location = locations[i];
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude }}) => {
+          location.value = latitude + ", " + longitude;
+        });
+      } else { 
+        location.value = "Geolocation is not supported by this browser.";
+      }
     }
 
     // CLEAR FORM FIELDs
 
-    function clearField1() {
-        var field = document.getElementById("coordinates1");
-        field.value = "";
+    Array.prototype.forEach.call(
+      document.querySelectorAll('.clear-button'),
+      (button, i) => {
+        button.addEventListener('click', () => clearField(i));
+      }
+    );
+
+    function clearField(i) {
+        const location = locations[i];
+        location.value = "";
     }
 
-    function clearField2() {
-        var field = document.getElementById("coordinates2");
-        field.value = "";
-    }
-    function clearField3() {
-        var field = document.getElementById("coordinates3");
-        field.value = "";
-    }
     </script>
     
   </body>

@@ -5,9 +5,9 @@ class OrdersController < ApplicationController
 		@orders = Order.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 20)
 		# to allow csv and xls formats to be downloaded
 		respond_to do |format|
-			format.html
+			format.html 
 			format.csv { send_data @orders.to_csv }
-			format.xls { send_data @orders.to_csv(col_sep: "\t") } # tab separate to work on excel
+			format.xls { send_data @orders.to_csv(col_sep: "\t") } # tab separate to work with Excel
 		end
 	end
 
