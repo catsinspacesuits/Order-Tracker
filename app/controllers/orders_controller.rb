@@ -2,13 +2,17 @@ class OrdersController < ApplicationController
 	before_action :find_order, only: [:edit, :destroy, :update, :show]
 
 	def index
-		@orders = Order.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 20)
-		# to allow csv and xls formats to be downloaded
-		respond_to do |format|
-			format.html 
-			format.csv { send_data @orders.to_csv }
-			format.xls { send_data @orders.to_csv(col_sep: "\t") } # tab separate to work with Excel
-		end
+    orders = Order.all.order("created_at DESC")
+
+    # to allow csv and xls formats to be downloaded
+    respond_to do |format|
+    	# paginate call within html block so all data (and not just one page) can be downloaded
+      format.html do 
+          @orders = orders.paginate(:page => params[:page], :per_page => 20)
+      end
+      format.csv { send_data orders.to_csv }
+      format.xls { send_data orders.to_csv(col_sep: "\t") } # tab separate to work with Excel
+    end
 	end
 
 	def new
