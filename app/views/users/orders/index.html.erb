@@ -17,7 +17,7 @@
 				<%= link_to "Delete", order_path(order), method: :delete, data: { confirm: "Are you sure?" } %><br>
 			<% end %>
 		<% end %>
-		<%= order.created_at %>
+		<p class="date-time"><%= order.created_at.to_formatted_s(:short) %><p>
 	</div>
 <% end %>
 
