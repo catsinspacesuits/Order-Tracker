@@ -6,6 +6,7 @@ module Users
       orders = @user.orders
       # to allow csv and xls formats to be downloaded for all user data
       respond_to do |format|
+        # paginate call within html block so all data (and not just one page) can be downloaded
         format.html do 
           @orders = orders.paginate(:page => params[:page], :per_page => 20)
         end
