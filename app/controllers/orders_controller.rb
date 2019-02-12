@@ -17,6 +17,7 @@ class OrdersController < ApplicationController
 
 	def new
 		@order = current_user.orders.build
+		redirect_to new_user_session_path
 	end
 
 	def update

@@ -23,8 +23,8 @@ describe Order do
     it { should validate_presence_of(:customer_location).with_message(": PLEASE FILL IN THIS FIELD!") }
   end
 
-   
-  describe Order, type: :model do
+  describe "associations" do
     it { should belong_to(:user) }
   end
+
 end
