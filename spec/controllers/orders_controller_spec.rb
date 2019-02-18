@@ -18,6 +18,9 @@ describe OrdersController, type: :controller do
       expect(response).to render_template('show')
     end
   end
-
+  
+  it 'protects from forgery' do
+      expect(ApplicationController.request_forgery_protection_token).to_not be_nil
+  end
 end
 
