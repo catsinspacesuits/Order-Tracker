@@ -12,6 +12,7 @@ gem 'jquery-rails'
 gem 'rails', '~> 5.1.6'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
+gem 'rubocop', require: false
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 gem 'simple_form', '~> 4.0', '>= 4.0.1'
@@ -21,7 +22,6 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'therubyracer', platforms: :ruby
 gem 'will_paginate', '~> 3.1.1'
 gem 'will_paginate-bootstrap'
-
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
@@ -42,21 +42,21 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
-  gem 'rspec-rails', '~> 3.8'
   gem 'rails-controller-testing'
+  gem 'rspec-rails', '~> 3.8'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers', '4.0.0.rc1'
 end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+  gem 'web-console', '>= 3.3.0'
 end
 
 group :production do
