@@ -8,7 +8,7 @@ describe Order do
 
   context "all coordinates present" do
     let(:order) { Order.new(start_point: "52.5200, 13.4050", restaurant_location: "52.6200, 13.4050", customer_location: "52.5200, 13.4750" ) }
-
+    # 23203.5267... is the distance between the above coordinates
     it "should return sum of distances" do
       expect(order.total_distance).to eq 23203.526708347956
     end
