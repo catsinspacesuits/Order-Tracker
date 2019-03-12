@@ -1,7 +1,9 @@
 class Order < ApplicationRecord
 	belongs_to :user
 	validates :start_point, :restaurant_location, :customer_location, presence: { message: ": PLEASE FILL IN THIS FIELD!" }
-	
+	validates :start_point, :restaurant_location, :customer_location, format: { with: /\A-?(?:90(?:(?:\.0*)?)|(?:[0-9]|[1-8][0-9])(?:(?:\.\d*)?)),\s-?(?:180(?:(?:\.0*)?)|(?:[0-9]|[1-9][0-9]|1[0-7][0-9])(?:(?:\.\d*)?))\z/.freeze, 
+		                                message: "PLEASE USE VALID COORDINATE FORMAT" }
+
 	def start_to_restaurant_distance
 	  Geolocation.new.distance(
 	    start_point.split(',').map! { |e| e.to_f },
