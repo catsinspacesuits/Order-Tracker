@@ -16,7 +16,7 @@
 	<%= link_to "Excel", orders_path(format: "xls") %>
 </p>
 
-<h3 class="order-info order-info-header">Restaurant</h3>
+<h3 class="order-info order-info-header">Rest.</h3>
 <h3 class="order-info order-info-header">Dist. to Rest. (m)</h3>
 <h3 class="order-info order-info-header">Dist. to Cust. (m)</h3>
 <h3 class="order-info order-info-header">Total (m)</h3>
@@ -34,8 +34,8 @@
 		
 		<% if user_signed_in? %> <!-- only show edit and delete of user's own orders -->
 			<% if order.user_id == current_user.id %>
-				<%= link_to "Edit", edit_order_path(order) %>
-				<%= link_to "Delete", order_path(order), method: :delete, data: { confirm: "Are you sure?" } %><br>
+				<%= link_to "Edit", edit_order_path(order), class: "delete-edit" %>
+				<%= link_to "Delete", order_path(order), class: "delete-edit", method: :delete, data: { confirm: "Are you sure?" } %><br>
 			<% end %>
 		<% end %>
 		<p class="date-time"><%= order.created_at.to_formatted_s(:short) %><p>

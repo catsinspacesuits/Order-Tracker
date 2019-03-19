@@ -26,11 +26,6 @@
  	margin: 8px;
  }
 
- a {
- 	font-size: 11px;
- 	margin-left: 3px;
- }
-
 // FONTS
 
  body {
@@ -65,8 +60,16 @@
 	font-size: 10px;
 }
 
+.order-info a {
+	font-size: 11px;
+}
+
 .order-info-header {
 	font-weight: 700;
+}
+
+.delete-edit {
+	font-size: 10px;
 }
 
 .order-box {
