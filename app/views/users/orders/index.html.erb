@@ -3,13 +3,22 @@
 	<%= link_to "CSV", user_orders_path(current_user.id, format: "csv") %> |
 	<%= link_to "Excel", user_orders_path(current_user.id, format: "xls") %>
 </p>
+
+<h3 class="order-info order-info-header">Restaurant</h3>
+<h3 class="order-info order-info-header">Dist. to Rest. (m)</h3>
+<h3 class="order-info order-info-header">Dist. to Cust. (m)</h3>
+<h3 class="order-info order-info-header">Total (m)</h3>
+<h3 class="order-info order-info-header">Fee</h3>
+<h3 class="order-info order-info-header">Zone</h3>
+
 <% @orders.each do |order| %>
 	<div class="order-box">
 		<h4 class="order-info"><%= link_to order.restaurant, order_path(order) %></h4>
 		<h4 class="order-info"><%= order.start_to_restaurant_distance.round(0) %></h4>
 		<h4 class="order-info"><%= order.restaurant_to_customer_distance.round(0) %></h4>
 		<h4 class="order-info"><%= order.total_distance.round(0) %></h4>
-		<h4 class="order-info"><%= order.fee %></h4><br>
+		<h4 class="order-info"><%= order.fee %></h4>
+		<h4 class="order-info"><%= order.zone %></h4><br>
 		
 		<% if user_signed_in? %> <!-- only show edit and delete of user's own orders -->
 			<% if order.user_id == current_user.id %>

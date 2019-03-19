@@ -6,6 +6,12 @@
 <div class="container-fluid">
 	<div class="row coords-box">
 		<div class="col-xs-8 form-input">
+			<%= f.input :zone, collection: [ "FRI", "GAK", "TBN", "BMP", "NEU", "SCH", "BMO", "WIL", "BFS", "BWE", "BWG" ] %>
+		</div>
+	</div>
+
+	<div class="row coords-box">
+		<div class="col-xs-8 form-input">
 			<%= f.input :restaurant %>
 		</div>
 	</div>

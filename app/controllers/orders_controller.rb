@@ -51,7 +51,7 @@ class OrdersController < ApplicationController
 	private
 
 		def order_params
-			params.require(:order).permit(:start_point, :restaurant_location, :customer_location, :fee, :restaurant)
+			params.require(:order).permit(:start_point, :restaurant_location, :customer_location, :fee, :restaurant, :zone)
 		end
 
 		def find_order
