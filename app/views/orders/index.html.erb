@@ -32,13 +32,14 @@
 		<h4 class="order-info"><%= number_to_currency(order.fee, unit: "€") %></h4>
 		<h4 class="order-info"><%= order.zone %></h4><br>
 		
+		<p class="date-time"><%= order.created_at.to_formatted_s(:short) %><p>
+			
 		<% if user_signed_in? %> <!-- only show edit and delete of user's own orders -->
 			<% if order.user_id == current_user.id %>
-				<%= link_to "Edit", edit_order_path(order), class: "delete-edit" %>
-				<%= link_to "Delete", order_path(order), class: "delete-edit", method: :delete, data: { confirm: "Are you sure?" } %><br>
+				<span class="delete-edit"><%= link_to "Edit", edit_order_path(order) %></span>
+				<span class="delete-edit"><%= link_to "Delete", order_path(order), method: :delete, data: { confirm: "Are you sure?" } %></span><br>
 			<% end %>
 		<% end %>
-		<p class="date-time"><%= order.created_at.to_formatted_s(:short) %><p>
 	</div>
 <% end %>
 

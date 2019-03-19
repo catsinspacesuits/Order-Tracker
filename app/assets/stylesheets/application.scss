@@ -56,7 +56,7 @@
 
 .order-info {
 	display: inline-block;
-	width: 15.5%;
+	width: 15.8%;
 	font-size: 10px;
 }
 
@@ -69,24 +69,22 @@
 }
 
 .delete-edit {
-	font-size: 10px;
+	font-size: 9px;
 }
 
 .order-box {
 	position: relative;
 	border: 1px solid #aaa;
 	border-radius: 5px;
-	margin: 2px;
-	padding: 2px;
+	padding-left: 2px;
 }
 
 .date-time {
-	position: absolute;
-	bottom: 0;
-	right: 0;
-	padding: 4px;
+	// position: absolute;
+	// bottom: 0;
+	// right: 0;
 	margin: 0;
-	font-size: 1rem;
+	font-size: 9px;
 	color: gray;
 }
 
